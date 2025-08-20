@@ -1,0 +1,4 @@
+*.meta
+node_modules/
+*.mp4
+*.blend1
