@@ -106,7 +106,7 @@ export default makeScene2D(function* (view) {
   yield* waitFor(1);
 
   yield* listOfNums2().latexNums[0].opacity(0, 1);
-  flashLine(arrows[0]);
+  yield* flashLine(arrows[0]);
 
   yield* waitFor(1);
 

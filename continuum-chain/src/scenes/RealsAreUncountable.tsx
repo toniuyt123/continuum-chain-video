@@ -110,6 +110,13 @@ export default makeScene2D(function* (view) {
       `${generateRandomNumberString(1)}.${generateRandomNumberString(15)}...`
     );
 
+    if (rowIndex === 2) {
+      const original = node2.tex()[0];
+      const alteredString =
+        original.substring(0, 3) + "9" + original.substring(4);
+      node2.tex(alteredString);
+    }
+
     animations.push(
       all(
         node1.opacity(1, 0.3, easeInOutCubic),
@@ -158,7 +165,8 @@ export default makeScene2D(function* (view) {
 
   const processDigit = function* (
     index: number,
-    delayBeforeDrop: number = 0.5
+    delayBeforeDrop: number = 0.5,
+    skipAddOne: boolean = false
   ) {
     yield* all(
       digitsRef[index].opacity(1, 0.5, easeInOutCubic),
@@ -177,6 +185,24 @@ export default makeScene2D(function* (view) {
       1.5,
       easeInOutCubic
     );
+
+    const addOne = createRef<Latex>();
+    if (!skipAddOne) {
+      view.add(<Latex ref={addOne} tex={"^{+1}"} fill="red" opacity={0} />);
+      addOne().left(digitsRef[index].right());
+      yield* addOne().opacity(1, 0.3);
+    }
+
+    const digit: number = +digitsRef[index].tex()[0];
+    yield* all(
+      digitsRef[index].tex(`${(digit + 1) % 10}`, 0.5, easeInOutCubic),
+      ...(skipAddOne
+        ? []
+        : [
+            addOne().opacity(0, 0.5, easeInOutCubic),
+            addOne().position(digitsRef[index].position(), 0.5, easeInOutCubic),
+          ])
+    );
   };
   yield* processDigit(0);
   yield* waitFor(3);
@@ -187,7 +213,7 @@ export default makeScene2D(function* (view) {
   yield* sequence(
     0.3,
     ...Array.from({ length: rows - 2 }, (_, i) =>
-      processDigit(i + 2, i === rows - 3 ? 0.5 : 0.3)
+      processDigit(i + 2, i === rows - 3 ? 0.5 : 0.3, true)
     )
   );
 });
