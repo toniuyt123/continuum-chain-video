@@ -10,10 +10,11 @@ import test from "./scenes/test?scene";
 
 export default makeProject({
   scenes: [
-    /*example,*/
-    RealNumbersAreUncountableIntro,
-    RealsAreUncountable,
+    example,
+    // RealNumbersAreUncountableIntro,
+    // RealsAreUncountable,
     // NaturalsBijections
+    // test,
   ],
-  audio: RealsAreUncoutanleAudio,
+  // audio: RealsAreUncoutanleAudio,
 });

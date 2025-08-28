@@ -8,7 +8,10 @@ import {
 } from "@motion-canvas/core";
 
 export default makeScene2D(function* (view) {
-  const lattice = createSubsetLattice({ set: [1, 2, 3, 4] });
+  const lattice = createSubsetLattice({
+    set: [1, 2, 3, 4],
+    renderUpToLevel: 2,
+  });
 
   // Add the lattice node to the scene
   view.add(lattice.node);
@@ -22,4 +25,15 @@ export default makeScene2D(function* (view) {
     yield* line().stroke("red", 0.2, easeInOutCubic);
   }
 
+  const secondLattice = createSubsetLattice({
+    set: [1, 2, 3, 4],
+    renderUpToLevel: 2,
+    verticalGap: -100,
+    horizontalGap: 150,
+    startingTex: "\\mathbb{N}",
+    labelTransform: (label) => `\\mathbb{N} \\setminus ${label}`,
+  });
+  view.add(secondLattice.node);
+
+  yield* secondLattice.animate(1);
 });
