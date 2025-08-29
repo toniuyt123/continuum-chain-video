@@ -12,6 +12,11 @@ import sheepToFive from "./scenes/sheepToFive?scene";
 import sheepToFIveAudio from "./audio/sheep-to-5.mp3";
 import eachNCanonicalSet from "./scenes/eachNCanonicalSet?scene";
 
+import emptySet from "./scenes/emptySet?scene";
+import whenIsFinite from "./scenes/whenIsFinite?scene";
+import infiniteExamples from "./scenes/infiniteExamples?scene";
+import emptySetAndWhatIsFiniteAudio from "./audio/empty_what_is_finite.mp3";
+
 export default makeProject({
   scenes: [
     //example,
@@ -19,9 +24,12 @@ export default makeProject({
     // RealsAreUncountable,
     // NaturalsBijections
     // test,
-    sheepToFive,
-    eachNCanonicalSet,
+    // sheepToFive,
+    // eachNCanonicalSet,
+    emptySet,
+    whenIsFinite,
+    infiniteExamples,
   ],
   // audio: RealsAreUncoutanleAudio,
-  audio: sheepToFIveAudio,
+  audio: emptySetAndWhatIsFiniteAudio,
 });

@@ -1,27 +1,22 @@
 import {
   Img,
   Latex,
-  Line,
   makeScene2D,
   Node,
   QuadBezier,
   Rect,
 } from "@motion-canvas/2d";
 import {
-  all,
   createRef,
   easeInOutCubic,
   makeRef,
   sequence,
-  Vector2,
   waitFor,
 } from "@motion-canvas/core";
 
 import sheepPng from "../../../3d-stuff/images/sheep.png";
 import applePng from "../../../3d-stuff/images/apple.png";
-import pearPng from "../../../3d-stuff/images/pear.png";
 import grassPng from "../../../3d-stuff/images/grass_patch.png";
-import { randomInt, squishTransformAll } from "../utils/utils";
 
 export default makeScene2D(function* (view) {
   const sets: Latex[] = [];
