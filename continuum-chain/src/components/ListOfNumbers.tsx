@@ -51,12 +51,14 @@ export class ListOfNumbers extends Node {
     this.add(
       <Rect layout gap={this.gap}>
         {this.numbers.map((num, i) => (
-          <Latex
-            fill="white"
-            tex={num.toString()}
-            ref={makeRef(this.latexNums, i)}
-            opacity={i >= this.initialRendered() ? 0 : 1}
-          />
+          <Rect width={64}>
+            <Latex
+              fill="white"
+              tex={num.toString()}
+              ref={makeRef(this.latexNums, i)}
+              opacity={i >= this.initialRendered() ? 0 : 1}
+            />
+          </Rect>
         ))}
       </Rect>
     );

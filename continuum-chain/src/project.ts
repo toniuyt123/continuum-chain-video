@@ -4,6 +4,7 @@ import example from "./scenes/example?scene";
 import RealsAreUncountable from "./scenes/RealsAreUncountable?scene";
 import RealNumbersAreUncountableIntro from "./scenes/RealNumbersAreUncountableIntro?scene";
 import NaturalsBijections from "./scenes/NaturalsBijections?scene";
+import NaturalsBijectionsAudio from "./audio/naturals-bijections.mp3";
 
 import RealsAreUncoutanleAudio from "./audio/real-are-uncountable.mp3";
 import test from "./scenes/test?scene";
@@ -28,7 +29,7 @@ export default makeProject({
     //example,
     // RealNumbersAreUncountableIntro,
     // RealsAreUncountable,
-    // NaturalsBijections
+    NaturalsBijections,
     // test,
     // sheepToFive,
     // eachNCanonicalSet,
@@ -37,7 +38,7 @@ export default makeProject({
     // infiniteExamples,
     // powerSetIntroduction,
     // example,
-    roadmap,
+    //roadmap,
   ],
-  audio: introAudio,
+  audio: NaturalsBijectionsAudio,
 });
