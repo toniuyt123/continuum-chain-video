@@ -12,7 +12,7 @@ export interface SubsetLatticeOptions {
   levelDelay?: number;
   renderUpToLevel?: number;
   verticalGap?: number;
-  horizontalGap?: number;
+  horizontalGap?: number | number[];
   startingTex?: string;
   labelTransform?: (label: string) => string;
 }
@@ -37,12 +37,21 @@ export function createSubsetLattice({
 
   // We’ll collect everything inside root
   const rootNode = <Node ref={root} />;
+  const emptyNode = createRef<Node>();
+  const emptyLatex = createRef<Latex>();
+
+  const horizontalGaps: number[] = [];
+  if (typeof horizontalGap === "number") {
+    for (let i = 0; i < set.length; i++) {
+      horizontalGaps.push(horizontalGap);
+    }
+  } else {
+    horizontalGaps.push(...horizontalGap);
+  }
 
   // This generator performs the animation when called
   function* animate(levelsToAnimate = set.length) {
     // Empty set node
-    const emptyNode = createRef<Node>();
-    const emptyLatex = createRef<Latex>();
 
     root().add(
       <Node ref={emptyNode} position={new Vector2(0, 0)}>
@@ -81,7 +90,8 @@ export function createSubsetLattice({
       const currPositions: Vector2[] = currLevel.map(
         (_, i) =>
           new Vector2(
-            (-(currLevel.length - 1) * horizontalGap) / 2 + i * horizontalGap,
+            (-(currLevel.length - 1) * horizontalGaps[level]) / 2 +
+              i * horizontalGaps[level],
             -verticalGap * (level + 1)
           )
       );
@@ -140,6 +150,8 @@ export function createSubsetLattice({
               <Line
                 ref={lineRef}
                 points={[lineStart, lineStart]} // collapsed initially
+                endArrow
+                arrowSize={8}
                 lineWidth={4}
                 stroke="darkgray"
                 opacity={0.7}
@@ -169,5 +181,13 @@ export function createSubsetLattice({
     }
   }
 
-  return { node: rootNode, animate, nodeRefs, latexRefs, lineRefs }; // Return refs for testing
+  return {
+    node: rootNode,
+    animate,
+    nodeRefs,
+    latexRefs,
+    lineRefs,
+    emptyNode,
+    emptyLatex,
+  }; // Return refs for testing
 }

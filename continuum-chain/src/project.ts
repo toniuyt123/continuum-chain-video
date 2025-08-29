@@ -17,6 +17,9 @@ import whenIsFinite from "./scenes/whenIsFinite?scene";
 import infiniteExamples from "./scenes/infiniteExamples?scene";
 import emptySetAndWhatIsFiniteAudio from "./audio/empty_what_is_finite.mp3";
 
+import powerSetIntroduction from "./scenes/powerSetIntroduction?scene";
+import powerSetIntroductionAudio from "./audio/power-set-introduction.mp3";
+
 export default makeProject({
   scenes: [
     //example,
@@ -26,10 +29,12 @@ export default makeProject({
     // test,
     // sheepToFive,
     // eachNCanonicalSet,
-    emptySet,
-    whenIsFinite,
-    infiniteExamples,
+    // emptySet,
+    // whenIsFinite,
+    // infiniteExamples,
+    powerSetIntroduction,
+    example,
   ],
   // audio: RealsAreUncoutanleAudio,
-  audio: emptySetAndWhatIsFiniteAudio,
+  audio: powerSetIntroductionAudio,
 });

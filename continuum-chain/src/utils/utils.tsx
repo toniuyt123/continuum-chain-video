@@ -3,9 +3,11 @@ import {
   all,
   delay,
   easeInBack,
+  easeInOutCubic,
   easeOutBack,
   easeOutQuint,
   ThreadGenerator,
+  waitFor,
 } from "@motion-canvas/core";
 
 export function* arrApplyGradual<T>(
@@ -40,4 +42,15 @@ export function* squishTransformAll(
   yield* all(
     ...nodes.map((node, i) => squishTransform(node, (n) => transformFn(n, i)))
   );
+}
+
+export function* pulseNode(
+  node: Node,
+  scale: number = 1.2,
+  growTime: number = 0.5,
+  duration: number = 0.5
+) {
+  yield* node.scale(scale, growTime, easeInOutCubic);
+  yield* waitFor(duration);
+  yield* node.scale(1, growTime, easeInOutCubic);
 }
