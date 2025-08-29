@@ -20,6 +20,9 @@ import emptySetAndWhatIsFiniteAudio from "./audio/empty_what_is_finite.mp3";
 import powerSetIntroduction from "./scenes/powerSetIntroduction?scene";
 import powerSetIntroductionAudio from "./audio/power-set-introduction.mp3";
 
+import roadmap from "./scenes/roadmap?scene";
+import introAudio from "./audio/intro.mp3";
+
 export default makeProject({
   scenes: [
     //example,
@@ -32,9 +35,9 @@ export default makeProject({
     // emptySet,
     // whenIsFinite,
     // infiniteExamples,
-    powerSetIntroduction,
-    example,
+    // powerSetIntroduction,
+    // example,
+    roadmap,
   ],
-  // audio: RealsAreUncoutanleAudio,
-  audio: powerSetIntroductionAudio,
+  audio: introAudio,
 });
