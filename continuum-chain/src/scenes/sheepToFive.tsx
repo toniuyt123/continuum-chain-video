@@ -28,6 +28,7 @@ export default makeScene2D(function* (view) {
   view.add(
     <Latex
       ref={headingText}
+      tex={["\\text{Denoted by } \\mathbb{N}", "=", "\\{1,2,3,4...\\}"]}
       fill={"white"}
       position={[0, -400]}
       fontSize={64}
@@ -102,7 +103,7 @@ export default makeScene2D(function* (view) {
 
   yield* waitFor(7);
   yield* headingText().tex(
-    ["\\text{Denoted by } \\mathbb{N}", "=", "\\{1,2,3,4...\\}"],
+    ["\\mathbb{N}", "=", "\\{1,2,3,4...\\}"],
     1.5,
     easeInOutCubic
   );

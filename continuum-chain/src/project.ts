@@ -24,21 +24,28 @@ import powerSetIntroductionAudio from "./audio/power-set-introduction.mp3";
 import roadmap from "./scenes/roadmap?scene";
 import introAudio from "./audio/intro.mp3";
 
+import sheepStory from "./scenes/sheepStory?scene";
+import sheRealized from "./scenes/sheRealized?scene";
+import sheepStoryAudio from "./audio/sheep_story.mp3";
+
 export default makeProject({
   scenes: [
     //example,
     // RealNumbersAreUncountableIntro,
     // RealsAreUncountable,
-    NaturalsBijections,
+    //NaturalsBijections,
     // test,
-    // sheepToFive,
-    // eachNCanonicalSet,
+    sheepToFive,
+    eachNCanonicalSet,
     // emptySet,
     // whenIsFinite,
     // infiniteExamples,
     // powerSetIntroduction,
     // example,
     //roadmap,
+    //sheepStory,
+    //sheRealized,
+    //sheepToFive,
   ],
-  audio: NaturalsBijectionsAudio,
+  audio: sheepToFIveAudio,
 });
