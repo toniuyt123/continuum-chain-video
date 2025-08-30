@@ -31,6 +31,10 @@ import sheepStoryAudio from "./audio/sheep_story.mp3";
 import chainIntro from "./scenes/chainIntro?scene";
 import chainIntroAudio from "./audio/chainIntro.mp3";
 
+import pn from "./scenes/pn?scene";
+import pnAudio from "./audio/pn.mp3";
+import pnLattice from "./scenes/pnLattice?scene";
+
 export default makeProject({
   scenes: [
     //example,
@@ -49,7 +53,9 @@ export default makeProject({
     //sheepStory,
     //sheRealized,
     //sheepToFive,
-    chainIntro,
+    // chainIntro,
+    pn,
+    pnLattice,
   ],
-  audio: chainIntroAudio,
+  audio: pnAudio,
 });

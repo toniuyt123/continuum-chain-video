@@ -14,7 +14,13 @@ export interface SubsetLatticeOptions {
   verticalGap?: number;
   horizontalGap?: number | number[];
   startingTex?: string;
-  labelTransform?: (label: string) => string;
+  labelTransform?: (
+    label: string,
+    levelIndex?: number,
+    rowIndex?: number,
+    levelWidth?: number
+  ) => string;
+  reverseLevels?: boolean;
 }
 
 // this is very badly made for a motion canvas thing. It should be signals but it was my first thing so yeah
@@ -26,7 +32,8 @@ export function createSubsetLattice({
   verticalGap = 100,
   horizontalGap = 100,
   startingTex = "\\emptyset",
-  labelTransform = (label) => label,
+  labelTransform = (label, rowIndex, levelWidth) => label,
+  reverseLevels = false,
 }: SubsetLatticeOptions) {
   const root = createRef<Node>();
   // Store refs
@@ -104,14 +111,19 @@ export function createSubsetLattice({
         (): Array<ReturnType<typeof createRef<Line>>> => []
       );
 
-      currLevel.forEach((subset, i) => {
+      (reverseLevels ? currLevel.reverse() : currLevel).forEach((subset, i) => {
         const labelOffset = verticalGap < 0 ? 20 : -20;
 
         root().add(
           <Node ref={nodeRefs[level + 1][i]} position={currPositions[i]}>
             <Latex
               ref={latexRefs[level + 1][i]}
-              tex={labelTransform(`\\{${subset.join(",")}\\}`)}
+              tex={labelTransform(
+                `\\{${subset.join(",")}\\}`,
+                level,
+                i,
+                currLevel.length
+              )}
               y={labelOffset}
               fill="white"
               fontSize={24}
@@ -128,7 +140,7 @@ export function createSubsetLattice({
                 subset.slice(0, j).concat(subset.slice(j + 1))
               );
 
-        parents.reverse().forEach((parent) => {
+        (reverseLevels ? parents : parents.reverse()).forEach((parent) => {
           const parentIdx =
             level === 0
               ? 0
@@ -152,7 +164,8 @@ export function createSubsetLattice({
               <Line
                 ref={lineRef}
                 points={[lineStart, lineStart]} // collapsed initially
-                endArrow
+                endArrow={verticalGap >= 0}
+                startArrow={verticalGap < 0}
                 arrowSize={8}
                 lineWidth={4}
                 stroke="darkgray"

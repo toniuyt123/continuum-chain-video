@@ -54,3 +54,10 @@ export function* pulseNode(
   yield* waitFor(duration);
   yield* node.scale(1, growTime, easeInOutCubic);
 }
+
+export function randomPastelColor() {
+  const red = Math.floor(Math.random() * 128 + 127);
+  const green = Math.floor(Math.random() * 128 + 127);
+  const blue = Math.floor(Math.random() * 128 + 127);
+  return `rgb(${red}, ${green}, ${blue})`;
+}
