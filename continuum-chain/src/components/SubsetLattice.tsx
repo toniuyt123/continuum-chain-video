@@ -58,6 +58,8 @@ export function createSubsetLattice({
         <Latex ref={emptyLatex} tex={startingTex} fill="white" />
       </Node>
     );
+    nodeRefs[0] = [emptyNode];
+    latexRefs[0] = [emptyLatex];
 
     // Generate all non-empty subsets
     function getSubsets<T>(array: T[]): T[][] {
@@ -96,8 +98,8 @@ export function createSubsetLattice({
           )
       );
 
-      nodeRefs[level] = currLevel.map(() => createRef<Node>());
-      latexRefs[level] = currLevel.map(() => createRef<Latex>());
+      nodeRefs[level + 1] = currLevel.map(() => createRef<Node>());
+      latexRefs[level + 1] = currLevel.map(() => createRef<Latex>());
       lineRefs[level] = currLevel.map(
         (): Array<ReturnType<typeof createRef<Line>>> => []
       );
@@ -106,9 +108,9 @@ export function createSubsetLattice({
         const labelOffset = verticalGap < 0 ? 20 : -20;
 
         root().add(
-          <Node ref={nodeRefs[level][i]} position={currPositions[i]}>
+          <Node ref={nodeRefs[level + 1][i]} position={currPositions[i]}>
             <Latex
-              ref={latexRefs[level][i]}
+              ref={latexRefs[level + 1][i]}
               tex={labelTransform(`\\{${subset.join(",")}\\}`)}
               y={labelOffset}
               fill="white"
@@ -167,17 +169,17 @@ export function createSubsetLattice({
           all(
             ...lineRefs[level][i].map((lineRef) =>
               lineRef().points(
-                [lineRef().points()[0], nodeRefs[level][i]().position()],
+                [lineRef().points()[0], nodeRefs[level + 1][i]().position()],
                 levelDelay,
                 easeInOutCubic
               )
             ),
-            latexRefs[level][i]().opacity(1, levelDelay, easeInOutCubic)
+            latexRefs[level + 1][i]().opacity(1, levelDelay, easeInOutCubic)
           )
         )
       );
 
-      prevNodes = nodeRefs[level];
+      prevNodes = nodeRefs[level + 1];
     }
   }
 

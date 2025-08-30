@@ -28,6 +28,9 @@ import sheepStory from "./scenes/sheepStory?scene";
 import sheRealized from "./scenes/sheRealized?scene";
 import sheepStoryAudio from "./audio/sheep_story.mp3";
 
+import chainIntro from "./scenes/chainIntro?scene";
+import chainIntroAudio from "./audio/chainIntro.mp3";
+
 export default makeProject({
   scenes: [
     //example,
@@ -35,8 +38,8 @@ export default makeProject({
     // RealsAreUncountable,
     //NaturalsBijections,
     // test,
-    sheepToFive,
-    eachNCanonicalSet,
+    // sheepToFive,
+    // eachNCanonicalSet,
     // emptySet,
     // whenIsFinite,
     // infiniteExamples,
@@ -46,6 +49,7 @@ export default makeProject({
     //sheepStory,
     //sheRealized,
     //sheepToFive,
+    chainIntro,
   ],
-  audio: sheepToFIveAudio,
+  audio: chainIntroAudio,
 });
