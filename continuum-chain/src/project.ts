@@ -35,6 +35,9 @@ import pn from "./scenes/pn?scene";
 import pnAudio from "./audio/pn.mp3";
 import pnLattice from "./scenes/pnLattice?scene";
 
+import rationalDensity from "./scenes/rationalDensity?scene";
+import rationalDensityAudio from "./audio/densityIntro.mp3";
+
 export default makeProject({
   scenes: [
     //example,
@@ -49,13 +52,12 @@ export default makeProject({
     // infiniteExamples,
     // powerSetIntroduction,
     // example,
-    //roadmap,
+    roadmap,
     //sheepStory,
     //sheRealized,
     //sheepToFive,
     // chainIntro,
-    pn,
-    pnLattice,
+    //rationalDensity,
   ],
-  audio: pnAudio,
+  audio: rationalDensityAudio,
 });

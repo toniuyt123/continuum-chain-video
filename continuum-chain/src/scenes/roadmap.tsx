@@ -13,6 +13,7 @@ import {
   all,
   createRef,
   delay,
+  easeInOutCubic,
   linear,
   makeRef,
   waitFor,
@@ -20,6 +21,7 @@ import {
 
 import video from "../video/two_idle_sheep.mp4";
 import { createSubsetLattice } from "../components/SubsetLattice";
+import { NumberLine } from "../components/NumberLine";
 
 export default makeScene2D(function* (view) {
   const videoRef = createRef<Video>();
@@ -29,6 +31,7 @@ export default makeScene2D(function* (view) {
     verticalGap: 75,
   });
   const sectors: Rect[] = [];
+  const numberLineRef = createRef<NumberLine>();
 
   view.add(
     <>
@@ -79,6 +82,22 @@ export default makeScene2D(function* (view) {
           fill={"white"}
           fontFamily={"Katex_Main"}
         />
+        <NumberLine
+          ref={numberLineRef}
+          position={[0, 100]}
+          points={[
+            [-500 / 2, 0],
+            [500 / 2, 0],
+          ]}
+          lineWidth={6}
+          stroke={"white"}
+          startArrow
+          endArrow
+          start={0.5}
+          end={0.5}
+          centerOffset={-150}
+          lineScale={300}
+        />
       </Rect>
       <Rect ref={makeRef(sectors, 3)} position={[-450, 180]}>
         <Txt text={"The Power Set"} fill={"white"} fontFamily={"Katex_Main"} />
@@ -105,6 +124,16 @@ export default makeScene2D(function* (view) {
     delay(1, sectors[0].opacity(1, 2)),
     delay(2, sectors[1].opacity(1, 2)),
     delay(4.5, sectors[2].opacity(1, 2)),
+    delay(
+      4.7,
+      all(
+        numberLineRef().start(0, 1, easeInOutCubic),
+        numberLineRef().end(1, 1, easeInOutCubic),
+        numberLineRef().addNumber(0),
+        numberLineRef().addNumber(1),
+        delay(1, numberLineRef().populateBetween(0, 1, 5, 0.1, 0.1, 2))
+      )
+    ),
     delay(6, sectors[3].opacity(1, 2)),
     delay(6, lattice.animate()),
     delay(8, sectors[4].opacity(1, 2))
