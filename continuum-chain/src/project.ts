@@ -41,9 +41,11 @@ import rationalDensityAudio from "./audio/densityIntro.mp3";
 import realsDensity from "./scenes/realsDensity?scene";
 import realsDensityAudio from "./audio/relsDensity.mp3";
 import construction from "./scenes/construction?scene";
+import butItWasAboutNaturals from "./scenes/butItWasAboutNaturals?scene";
 import constructionAudio from "./audio/continuum-chain-construction.mp3";
-import testScene from "./scenes/testScene?scene";
-import bijectionNatRat from "./scenes/bijectionNatRat?scene";
+import goingBackToBijection from "./scenes/goingBackToBijection?scene";
+import whatDoesItLookLike from "./scenes/whatDoesItLookLike?scene";
+import inTheDiagram from "./scenes/inTheDiagram?scene";
 
 export default makeProject({
   scenes: [
@@ -65,10 +67,12 @@ export default makeProject({
     // chainIntro,
     //rationalDensity,
     //realsDensity,
-    // construction,
-    // testScene,
-    bijectionNatRat,
-    RealsAreUncountable,
+
+    construction,
+    butItWasAboutNaturals,
+    goingBackToBijection,
+    whatDoesItLookLike,
+    inTheDiagram,
   ],
   audio: constructionAudio,
 });
