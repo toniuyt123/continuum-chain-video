@@ -40,6 +40,8 @@ import rationalDensityAudio from "./audio/densityIntro.mp3";
 
 import realsDensity from "./scenes/realsDensity?scene";
 import realsDensityAudio from "./audio/relsDensity.mp3";
+import construction from "./scenes/construction?scene";
+import constructionAudio from "./audio/continuum-chain-construction.mp3";
 
 export default makeProject({
   scenes: [
@@ -47,7 +49,7 @@ export default makeProject({
     // RealNumbersAreUncountableIntro,
     // RealsAreUncountable,
     //NaturalsBijections,
-    // test,
+    //test,
     // sheepToFive,
     // eachNCanonicalSet,
     // emptySet,
@@ -61,7 +63,8 @@ export default makeProject({
     //sheepToFive,
     // chainIntro,
     //rationalDensity,
-    realsDensity,
+    //realsDensity,
+    construction,
   ],
-  audio: realsDensityAudio,
+  audio: constructionAudio,
 });
