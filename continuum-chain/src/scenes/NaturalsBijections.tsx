@@ -16,15 +16,7 @@ import {
   waitFor,
 } from "@motion-canvas/core";
 import { ListOfNumbers } from "../components/ListOfNumbers";
-import { arrApplyGradual, pulseNode } from "../utils/utils";
-
-function screenToScene(screenCoords: Vector2): Vector2 {
-  const viewSize = useScene().getSize();
-  return new Vector2(
-    screenCoords.x - viewSize.x / 2,
-    screenCoords.y - viewSize.y / 2
-  );
-}
+import { arrApplyGradual, pulseNode, screenToScene } from "../utils/utils";
 
 function* flashLine(line: Line) {
   yield* loop(6, (i) => {

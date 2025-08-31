@@ -24,13 +24,13 @@ import {
 } from "@motion-canvas/core";
 
 export interface ListOfNumbersProps extends NodeProps {
-  numbers: number[];
-  intialRendered?: SignalValue<number>;
+  numbers: number[] | string[];
+  initialRendered?: SignalValue<number>;
   gap?: SignalValue<number>;
 }
 
 export class ListOfNumbers extends Node {
-  public declare readonly numbers: number[];
+  public declare readonly numbers: number[] | string[];
 
   @initial(0)
   @signal()
@@ -51,7 +51,7 @@ export class ListOfNumbers extends Node {
     this.add(
       <Rect layout gap={this.gap}>
         {this.numbers.map((num, i) => (
-          <Rect width={64}>
+          <Rect width={30}>
             <Latex
               fill="white"
               tex={num.toString()}
@@ -67,6 +67,7 @@ export class ListOfNumbers extends Node {
   public *renderSome(n: number, duration: number = 2) {
     const targetCount = Math.min(this.renderedUpTo + n, this.numbers.length);
 
+    const logger = useLogger();
     yield* all(
       ...this.latexNums
         .slice(this.renderedUpTo, targetCount)

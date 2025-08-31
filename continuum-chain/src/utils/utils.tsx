@@ -7,6 +7,8 @@ import {
   easeOutBack,
   easeOutQuint,
   ThreadGenerator,
+  useScene,
+  Vector2,
   waitFor,
 } from "@motion-canvas/core";
 
@@ -60,4 +62,12 @@ export function randomPastelColor() {
   const green = Math.floor(Math.random() * 128 + 127);
   const blue = Math.floor(Math.random() * 128 + 127);
   return `rgb(${red}, ${green}, ${blue})`;
+}
+
+export function screenToScene(screenCoords: Vector2): Vector2 {
+  const viewSize = useScene().getSize();
+  return new Vector2(
+    screenCoords.x - viewSize.x / 2,
+    screenCoords.y - viewSize.y / 2
+  );
 }
