@@ -83,5 +83,5 @@ export default makeScene2D(function* (view) {
 
   yield* all(middlePath().end(1, 5), delay(2, texts[0].opacity(1, 1)));
 
-  yield* waitFor(6);
+  yield* waitFor(3);
 });

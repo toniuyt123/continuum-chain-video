@@ -45,7 +45,18 @@ import butItWasAboutNaturals from "./scenes/butItWasAboutNaturals?scene";
 import constructionAudio from "./audio/continuum-chain-construction.mp3";
 import goingBackToBijection from "./scenes/goingBackToBijection?scene";
 import whatDoesItLookLike from "./scenes/whatDoesItLookLike?scene";
+import imaginening from "./scenes/imaginening?scene";
 import inTheDiagram from "./scenes/inTheDiagram?scene";
+
+import bijectionNatRat from "./scenes/bijectionNatRat?scene";
+import natRatAudio from "./audio/natratbijection.mp3";
+import imaginening2 from "./scenes/imaginening2?scene";
+import imagening3 from "./scenes/imagening3?scene";
+import confused from "./scenes/confused?scene";
+import realsIntro from "./scenes/realsIntro?scene";
+import realsIntro2 from "./scenes/realsIntro2?scene";
+
+import realsIntroAudio from "./audio/realsIntro.mp3";
 
 export default makeProject({
   scenes: [
@@ -56,9 +67,10 @@ export default makeProject({
     // sheepToFive,
     // eachNCanonicalSet,
     // emptySet,
-    whenIsFinite,
+    //whenIsFinite,
     // infiniteExamples,
-    // powerSetIntroduction,
+    //powerSetIntroduction,
+
     // example,
     //roadmap,
     //sheepStory,
@@ -68,11 +80,23 @@ export default makeProject({
     //rationalDensity,
     //realsDensity,
 
-    construction,
-    butItWasAboutNaturals,
-    goingBackToBijection,
-    whatDoesItLookLike,
-    inTheDiagram,
+    // construction,
+    // butItWasAboutNaturals,
+    // goingBackToBijection,
+    // whatDoesItLookLike,
+    // imaginening,
+    // imaginening2,
+    // inTheDiagram,
+    // imagening3,
+    // confused,
+    //test,
+    //roadmap,
+
+    // realsIntro,
+    // realsIntro2,
+
+    RealNumbersAreUncountableIntro,
+    RealsAreUncountable,
   ],
-  audio: constructionAudio,
+  //audio: pnAudio,
 });

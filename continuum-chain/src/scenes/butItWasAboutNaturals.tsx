@@ -38,6 +38,7 @@ export default makeScene2D(function* (view) {
     </>
   );
 
+  yield;
   videoRef().play();
   yield* slideTransition(Direction.Bottom, 1);
   yield* texts[0].opacity(1, 1);

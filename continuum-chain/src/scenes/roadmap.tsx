@@ -20,11 +20,13 @@ import {
 } from "@motion-canvas/core";
 
 import video from "../video/two_idle_sheep.mp4";
+import video2 from "../video/galaxy_chain.mp4";
 import { createSubsetLattice } from "../components/SubsetLattice";
 import { NumberLine } from "../components/NumberLine";
 
 export default makeScene2D(function* (view) {
   const videoRef = createRef<Video>();
+  const videoRef2 = createRef<Video>();
   const lineRef = createRef<Line>();
   const lattice = createSubsetLattice({
     set: [1, 2, 3],
@@ -49,6 +51,21 @@ export default makeScene2D(function* (view) {
           width={480}
           height={270}
           loop={true}
+        />
+      </Rect>
+      <Rect ref={makeRef(sectors, 4)} position={[360, 200]}>
+        <Txt
+          text={"The Continuum Chain"}
+          fill={"white"}
+          fontFamily={"Katex_Main"}
+        />
+        <Video
+          ref={videoRef2}
+          src={video2}
+          width={640} // Increased width
+          height={360} // Increased height to maintain proportions
+          loop={true}
+          position={[100, 200]}
         />
       </Rect>
       <Path
@@ -103,21 +120,17 @@ export default makeScene2D(function* (view) {
         <Txt text={"The Power Set"} fill={"white"} fontFamily={"Katex_Main"} />
         {lattice.node}
       </Rect>
-      <Rect ref={makeRef(sectors, 4)} position={[360, 200]}>
-        <Txt
-          text={"The Continuum Chain"}
-          fill={"white"}
-          fontFamily={"Katex_Main"}
-        />
-      </Rect>
     </>
   );
 
   videoRef().play();
+
   sectors.forEach((sector) => {
     sector.opacity(0);
   });
   lattice.node.position([0, 290]);
+
+  videoRef2().play();
 
   yield* all(
     lineRef().end(1, 10, linear),
@@ -138,5 +151,5 @@ export default makeScene2D(function* (view) {
     delay(6, lattice.animate()),
     delay(8, sectors[4].opacity(1, 2))
   );
-  yield* waitFor(3);
+  yield* waitFor(8);
 });

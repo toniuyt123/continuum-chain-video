@@ -322,5 +322,5 @@ export default makeScene2D(function* (view) {
     0.3,
     ...intersectingCircles.map((circle) => circle.opacity(0.8, 1))
   );
-  yield* waitFor(2.5);
+  yield* waitFor(3);
 });
